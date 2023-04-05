@@ -42,8 +42,12 @@ Consumer can view the created page and see alert message when click on each butt
 #### Shortcoming:
 
 Undo/Redo function is not working as expected
+
 Import function is not implemented
+
 Lack of Unittest
+
+Lack of intergating with API
 
 ### Estimation
 
