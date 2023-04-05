@@ -1,70 +1,50 @@
-# Getting Started with Create React App
+# FE TEST
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The project is a drag and drop application where admin can create by drop, edit buttons and paragraphs. Then show the edited page for Consumer
 
-## Available Scripts
+## Setup
 
-In the project directory, you can run:
+Clone this repository to your local machine, then run:
+
+### `npm install`
+
+Install all the dependencies needed for runing project
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the app in the development mode.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Result
 
-### `npm test`
+### Screenshots
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![Drag Button](./public/Screenshot%202023-04-06%20at%2006.18.12.png)
+![Drag Paragraph](./public/Screenshot%202023-04-06%20at%2006.19.19.png)
+![Show Alert](./public/Screenshot%202023-04-06%20at%2006.19.44.png)
+![Consumer View](./public/Screenshot%202023-04-06%20at%2006.20.00.png)
 
-### `npm run build`
+### Apply
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The UI is built using React.js framework with TailwindCSS as a utility-first CSS framework that makes it easy to style components without writing custom CSS. The application state is managed globally using GlobalState, makes it easy to share data between components, making the code more modular and maintainable.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Features:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+Admin can add new buttons and paragraphs by drag one from panel left to panel right
+Admin can edit the button text, alert message and paragraph content
+Admin can save current page
+Admin redo and undo
+Admin can export page under JSON file
+Consumer can view the created page and see alert message when click on each button
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### Shortcoming:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Undo/Redo function is not working as expected
+Import function is not implemented
+Lack of Unittest
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Estimation
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+5 working days
