@@ -2,6 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 function View() {
+  const handleClick = (msg) => {
+    alert(msg);
+  };
+
   const handleGenerate = () => {
     const itemsFromLocalStorage = JSON.parse(localStorage.getItem("items"));
     const itemsToRender = [];
@@ -13,9 +17,10 @@ function View() {
         itemsToRender.push(
           <button
             key={i}
+            onClick={() => handleClick(item.alert)}
             className="rounded-md bg-white px-2.5 py-1.5 text-lg font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 m-4"
           >
-            {item.text}
+            {item.text ? item.text : "Button"}
           </button>
         );
       } else if (item.type === "paragraph") {

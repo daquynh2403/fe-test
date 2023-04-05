@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GlobalContext } from "../../GlobalState";
 
 function Save() {
+  const { state, dispatch } = useContext(GlobalContext);
+  const { items, history, historyIndex } = state;
   const data = localStorage.getItem("items");
+
   const handleClick = () => {
-    console.log(JSON.parse(data));
+    console.log(data);
+    const updatedItems = [...items];
+
+    dispatch({ type: "SET_ITEMS", payload: updatedItems });
+    dispatch({
+      type: "SET_HISTORY",
+      payload: [...history.slice(0, historyIndex + 1), updatedItems],
+    });
+    dispatch({ type: "SET_HISTORY_INDEX", payload: historyIndex + 1 });
+    dispatch({ type: "SET_EDITING_BUTTON", payload: false });
+    dispatch({ type: "SET_EDITING_PARA", payload: false });
   };
   return (
     <button

@@ -1,17 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import EditParagraph from "./EditParagraph";
 import EditButton from "./EditButton";
+import { GlobalContext } from "../../GlobalState";
 
-function PagePanel({ items }) {
-  const [itemsData, setItemsData] = useState([]);
-  const handleTextChange = (index, type, text) => {
-    const updatedItems = [...itemsData];
-    updatedItems[index] = { type, text };
-    setItemsData(updatedItems);
+function PagePanel() {
+  const { state, dispatch } = useContext(GlobalContext);
+  const { items, history, historyIndex } = state;
+
+  const handleTextChange = (index, type, text, alert) => {
+    const updatedItems = [...items];
+    updatedItems[index] = {
+      type: type,
+      text: text,
+      alert: alert,
+    };
+    dispatch({ type: "SET_ITEMS", payload: updatedItems });
+    dispatch({
+      type: "SET_HISTORY",
+      payload: [...history.slice(0, historyIndex + 1), updatedItems],
+    });
+    dispatch({ type: "SET_HISTORY_INDEX", payload: historyIndex + 1 });
   };
+
   useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(itemsData));
-  }, [itemsData]);
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
   return (
     <React.Fragment>
@@ -21,7 +34,9 @@ function PagePanel({ items }) {
             <EditButton
               key={index}
               text="Button"
-              onTextChange={(text) => handleTextChange(index, item.type, text)}
+              onTextChange={(newText, newAlert) =>
+                handleTextChange(index, item.type, newText, newAlert)
+              }
             />
           );
         } else if (item.type === "paragraph") {
@@ -36,7 +51,6 @@ function PagePanel({ items }) {
           return null;
         }
       })}
-      {/* <button onClick={handleSave}>Save</button> */}
     </React.Fragment>
   );
 }

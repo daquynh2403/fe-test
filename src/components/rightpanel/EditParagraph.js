@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { GlobalContext } from "../../GlobalState";
 
 function EditParagraph({ text, onTextChange }) {
+  const { state, dispatch } = useContext(GlobalContext);
+  const { editingPara } = state;
   const [updatedText, setUpdatedText] = useState(text);
-  const [editing, setEditing] = useState(false);
 
   const handleCLick = () => {
-    setEditing(true);
+    dispatch({ type: "SET_EDITING_BUTTON", payload: false });
+    dispatch({ type: "SET_EDITING_PARA", payload: true });
   };
 
   const handleChange = (e) => {
@@ -21,7 +24,7 @@ function EditParagraph({ text, onTextChange }) {
       >
         {updatedText}
       </p>
-      {editing ? (
+      {editingPara ? (
         <div className="border-t border-gray-200 bg-gray-50 px-4 py-5 flex flex-col absolute bottom-0 left-0 w-full">
           <div className="mt-4 mb-4 w-3/12">
             <label

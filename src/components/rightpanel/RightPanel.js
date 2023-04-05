@@ -1,19 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Toolbar from "../toolbar/Toolbar";
 import PagePanel from "./PagePanel";
+import { GlobalContext } from "../../GlobalState";
 
 function RightPanel() {
-  const [items, setItems] = useState([]);
+  const { state, dispatch } = useContext(GlobalContext);
+  const { items, history, historyIndex } = state;
+
   const onDrop = (event) => {
     event.preventDefault();
     const id = event.dataTransfer.getData("text");
     const draggableElement = document.getElementById(id);
     const type = draggableElement.getAttribute("dataType");
+    const updatedItems = [...items];
     if (type === "button") {
-      setItems([...items, { type: "button" }]);
+      dispatch({
+        type: "SET_ITEMS",
+        payload: [...items, { type: "button" }],
+      });
     } else if (type === "paragraph") {
-      setItems([...items, { type: "paragraph" }]);
+      dispatch({
+        type: "SET_ITEMS",
+        payload: [...items, { type: "paragraph" }],
+      });
     }
+    dispatch({
+      type: "SET_HISTORY",
+      payload: [...history.slice(0, historyIndex + 1), updatedItems],
+    });
+    dispatch({ type: "SET_HISTORY_INDEX", payload: historyIndex + 1 });
   };
 
   const onDragOver = (event) => {
@@ -28,7 +43,7 @@ function RightPanel() {
         onDrop={onDrop}
         onDragOver={onDragOver}
       >
-        <PagePanel items={items} />
+        <PagePanel />
       </div>
     </React.Fragment>
   );

@@ -13,11 +13,18 @@ function Import() {
   };
 
   return (
-    <input
-      type="file"
-      onChange={handleImport}
+    <label
+      htmlFor="import-items"
       className="rounded-md p-2 text-gray-800 hover:bg-gray-700 hover:text-white py-2 px-4 font-semibold"
-    />
+    >
+      Import
+      <input
+        id="import-items"
+        type="file"
+        onChange={handleImport}
+        className="hidden"
+      />
+    </label>
   );
 }
 

@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import { DataProvider } from "./GlobalState";
 import LeftPanel from "./components/leftpanel/LeftPanel.js";
 import RightPanel from "./components/rightpanel/RightPanel.js";
+import GlobalState from "./GlobalState.js";
 
 function App() {
   return (
-    <DataProvider>
+    <GlobalState>
       <Router>
         <div className="flex flex-row h-screen overflow-hidden">
           <div className="flex-[0_0_20%] bg-[#F0F0F0] flex justify-center items-center">
@@ -17,7 +17,7 @@ function App() {
           </div>
         </div>
       </Router>
-    </DataProvider>
+    </GlobalState>
   );
 }
 
